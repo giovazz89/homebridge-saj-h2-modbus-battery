@@ -16,6 +16,9 @@ export class SajBatteryAccessory {
     statusLowBattery: 0,
   };
 
+  // fake sensor to carry values
+  private humidityService: Service;
+
   constructor(
     private readonly platform: SajH2ModbusBatteryPlatform,
     private readonly accessory: PlatformAccessory,
@@ -28,6 +31,11 @@ export class SajBatteryAccessory {
     // create Battery Service
     this.service = this.accessory.getService(this.platform.Service.Battery) || 
                    this.accessory.addService(this.platform.Service.Battery);
+
+    // workaround service (cannot have standalone battery)
+    this.humidityService = this.accessory.getService(this.platform.Service.HumiditySensor) ||
+                         this.accessory.addService(this.platform.Service.HumiditySensor);
+    this.humidityService.setCharacteristic(this.platform.Characteristic.Name, 'SAJ SOC');
 
     // start update loop
     this.updateData();
@@ -64,6 +72,9 @@ export class SajBatteryAccessory {
       this.service.updateCharacteristic(this.platform.Characteristic.BatteryLevel, this.state.soc);
       this.service.updateCharacteristic(this.platform.Characteristic.ChargingState, this.state.chargingState);
       this.service.updateCharacteristic(this.platform.Characteristic.StatusLowBattery, this.state.statusLowBattery);
+
+      // show percentage tile
+      this.humidityService.updateCharacteristic(this.platform.Characteristic.CurrentRelativeHumidity, soc);
 
       this.platform.log.debug(`Updated: SOC ${soc}%, Charging: ${isCharging}`);
 

@@ -41,6 +41,7 @@ export class SajH2ModbusBatteryPlatform implements DynamicPlatformPlugin {
       this.log.info('Aggiunta nuovo accessorio SAJ Battery:', this.config.name || 'SAJ Battery');
 
       const accessory = new this.api.platformAccessory(this.config.name || 'SAJ Battery', uuid);
+      accessory.category = this.api.hap.Categories.SENSOR;
       
       // create Accessory instance
       new SajBatteryAccessory(this, accessory);
