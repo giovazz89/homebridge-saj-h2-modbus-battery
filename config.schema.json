@@ -5,7 +5,7 @@
   "strictValidation": false,
   "schema": {
     "type": "object",
-    "required": ["name","local_ip"],
+    "required": ["name","ip"],
     "additionalProperties": false,
     "properties": {
       "name": {
@@ -13,7 +13,7 @@
         "type": "string",
         "default": "SAJ Battery"
       },
-      "local_ip": {
+      "ip": {
         "title": "Inverter local IP address",
         "type": "string",
         "placeholder": "192.168.x.x",
