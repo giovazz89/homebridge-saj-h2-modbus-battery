@@ -52,4 +52,4 @@ This is a third-party plugin and is not officially affiliated with SAJ Electric.
 
 ## Thanks
 
-A big thanks to [stanus74](https://github.com/stanus74) and his [home-assistant-saj-h2-modbus](https://github.com/stanus74/home-assistant-saj-h2-modbus), that made easyer indentifying the correct registers on the inverter to fetch data from
+A big thanks to [stanus74](https://github.com/stanus74) and his [home-assistant-saj-h2-modbus](https://github.com/stanus74/home-assistant-saj-h2-modbus), that made easier indentifying the correct registers on the inverter to fetch data from
