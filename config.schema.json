@@ -1,18 +1,27 @@
 {
-  "pluginAlias": "ExampleHomebridgePlugin",
+  "pluginAlias": "SajH2ModbusBatteryPlatform",
   "pluginType": "platform",
   "singular": true,
   "strictValidation": false,
   "schema": {
     "type": "object",
-    "required": ["name"],
+    "required": ["name","local_ip"],
     "additionalProperties": false,
     "properties": {
       "name": {
         "title": "Name",
         "type": "string",
-        "default": "Example Dynamic Platform"
-      }
+        "default": "SAJ Battery"
+      },
+      "local_ip": {
+        "title": "Inverter local IP address",
+        "type": "string",
+        "placeholder": "192.168.x.x",
+        "format": "ipv4"
+      },
+      "port": { "type": "number", "default": 502 },
+      "slaveId": { "type": "number", "default": 1 },
+      "interval": { "type": "number", "default": 60 }
     }
   }
 }

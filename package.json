@@ -1,22 +1,22 @@
 {
-  "name": "homebridge-plugin-name",
-  "displayName": "Plugin Name",
+  "name": "homebridge-saj-h2-modbus-battery",
+  "displayName": "SAJ H2 local battery",
   "type": "module",
   "version": "1.0.0",
   "private": true,
   "description": "A short description about what your plugin does.",
   "author": "Your Name",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/USERNAME/GITHUB_PROJECT_NAME#readme",
+  "homepage": "https://github.com/giovazz89/homebridge-saj-h2-modbus-battery#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME.git"
+    "url": "https://github.com/giovazz89/homebridge-saj-h2-modbus-battery.git"
   },
   "bugs": {
-    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME/issues"
+    "url": "https://github.com/giovazz89/homebridge-saj-h2-modbus-battery/issues"
   },
   "keywords": [
-    "homebridge-plugin"
+    "homebridge-plugin saj inverter battery"
   ],
   "main": "dist/index.js",
   "engines": {
@@ -30,11 +30,12 @@
     "watch": "npm run build && npm link && nodemon"
   },
   "dependencies": {
-    "homebridge-lib": "^8.0.1"
+    "homebridge-lib": "^8.0.1",
+    "modbus-serial": "^8.0.25"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.6.2",
     "eslint": "^10.3.0",
     "homebridge": "^2.0.0",
     "nodemon": "^3.1.14",
