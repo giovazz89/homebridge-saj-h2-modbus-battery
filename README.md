@@ -35,7 +35,8 @@ You can configure this plugin using the Homebridge UI or by adding the following
   "port": 502,
   "slaveId": 1,
   "interval": 60
-}```
+}
+```
 
 | Key      | Default            | Description                          |   |   |
 |----------|--------------------|--------------------------------------|---|---|
