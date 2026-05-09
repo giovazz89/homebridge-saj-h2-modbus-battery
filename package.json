@@ -16,7 +16,7 @@
     "url": "https://github.com/giovazz89/homebridge-saj-h2-modbus-battery/issues"
   },
   "keywords": [
-    "homebridge-plugin saj inverter battery"
+    "homebridge-plugin", "saj", "inverter", "battery"
   ],
   "main": "dist/index.js",
   "engines": {
