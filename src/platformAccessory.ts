@@ -1,4 +1,4 @@
-import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
+import { Service, PlatformAccessory } from 'homebridge';
 import * as ModbusRTUImport from 'modbus-serial';
 import { SajH2ModbusBatteryPlatform } from './platform.js';
 
@@ -8,7 +8,7 @@ const ModbusRTU = (ModbusRTUImport.default || ModbusRTUImport) as any;
 export class SajBatteryAccessory {
   private service: Service;
   private client = new ModbusRTU();
-  
+
   // internal state data
   private state = {
     soc: 0,
@@ -29,7 +29,7 @@ export class SajBatteryAccessory {
       .setCharacteristic(this.platform.Characteristic.Model, 'H2-6K-S');
 
     // create Battery Service
-    this.service = this.accessory.getService(this.platform.Service.Battery) || 
+    this.service = this.accessory.getService(this.platform.Service.Battery) ||
                    this.accessory.addService(this.platform.Service.Battery);
 
     // workaround service (cannot have standalone battery)
@@ -52,10 +52,10 @@ export class SajBatteryAccessory {
       // read the 4 registers (base 40960 + offset 12)
       const startRegister = 40960 + 12;
       const response = await this.client.readHoldingRegisters(startRegister, 4);
-      
+
       const rawSOC = response.data[0];
       const soc = rawSOC * 0.01;
-      
+
       // read battery current (offset 15, so index 3 in 4 registers buffer)
       // use readInt16BE to manage sign correctly
       const current = response.buffer.readInt16BE(6) * 0.01;
@@ -63,7 +63,7 @@ export class SajBatteryAccessory {
       // inverted logic (empirically confirmed):
       // negative = charging, positive = discharging
       const isCharging = current < -0.1;
-      
+
       this.state.soc = soc;
       this.state.chargingState = isCharging ? 1 : 0;
       this.state.statusLowBattery = soc < 15 ? 1 : 0;
